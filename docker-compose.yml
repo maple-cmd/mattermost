@@ -29,7 +29,8 @@ services:
     security_opt:
       - no-new-privileges:true
     pids_limit: 200
-    read_only: ${MATTERMOST_CONTAINER_READONLY}
+    # read_only: ${MATTERMOST_CONTAINER_READONLY}
+    read_only: false
     tmpfs:
       - /tmp
     volumes:
@@ -56,6 +57,10 @@ services:
 
       # additional settings
       - MM_SERVICESETTINGS_SITEURL
+    
+    ports:
+      - "8065:8065"
+      - "8067:8067"
 
 # If you use rolling image tags and feel lucky watchtower can automatically pull new images and
 # instantiate containers from it. https://containrrr.dev/watchtower/
